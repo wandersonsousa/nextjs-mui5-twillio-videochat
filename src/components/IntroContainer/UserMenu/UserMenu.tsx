@@ -1,9 +1,9 @@
 import React, { useState, useRef, useCallback } from 'react';
-import { makeStyles, Typography, Button, MenuItem, Link } from '@material-ui/core';
+import { makeStyles, Typography, Button, MenuItem, Link } from '@mui/material';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { useAppState } from '../../../state';
 import UserAvatar from './UserAvatar/UserAvatar';
-import Menu from '@material-ui/core/Menu';
+import Menu from '@mui/material/Menu';
 import useVideoContext from '../../../hooks/useVideoContext/useVideoContext';
 
 const useStyles = makeStyles({

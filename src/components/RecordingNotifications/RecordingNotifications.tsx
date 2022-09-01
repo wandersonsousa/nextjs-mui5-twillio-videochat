@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link } from '@material-ui/core';
+import { Link } from '@mui/material';
 import Snackbar from '../Snackbar/Snackbar';
 import useIsRecording from '../../hooks/useIsRecording/useIsRecording';
 

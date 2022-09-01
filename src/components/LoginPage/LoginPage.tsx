@@ -1,16 +1,16 @@
 import React, { ChangeEvent, useState, FormEvent } from 'react';
 import { useAppState } from '../../state';
 
-import Button from '@material-ui/core/Button';
+import Button from '@mui/material/Button';
 import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
-import Grid from '@material-ui/core/Grid';
+import Grid from '@mui/material/Grid';
 import { ReactComponent as GoogleLogo } from './google-logo.svg';
-import { InputLabel, Theme } from '@material-ui/core';
+import { InputLabel, Theme } from '@mui/material';
 import IntroContainer from '../IntroContainer/IntroContainer';
-import TextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/material/styles';
 import { useLocation, useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme: Theme) => ({

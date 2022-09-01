@@ -1,8 +1,8 @@
 import React from 'react';
 import clsx from 'clsx';
-import { Link } from '@material-ui/core';
+import { Link } from '@mui/material';
 import linkify from 'linkify-it';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/material/styles';
 
 const useStyles = makeStyles({
   messageContainer: {

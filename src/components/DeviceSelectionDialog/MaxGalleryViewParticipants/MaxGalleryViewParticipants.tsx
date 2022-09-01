@@ -1,4 +1,4 @@
-import { FormControl, MenuItem, Typography, Select, Grid } from '@material-ui/core';
+import { FormControl, MenuItem, Typography, Select, Grid } from '@mui/material';
 import { useAppState } from '../../../state';
 
 const MAX_PARTICIPANT_OPTIONS = [6, 12, 24];

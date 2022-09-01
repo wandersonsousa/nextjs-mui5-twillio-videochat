@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, createStyles } from '@material-ui/core/styles';
+import { makeStyles, createStyles } from '@mui/material/styles';
 import CloseIcon from '../../../icons/CloseIcon';
 
 const useStyles = makeStyles(() =>

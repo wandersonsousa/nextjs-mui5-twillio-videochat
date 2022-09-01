@@ -1,10 +1,10 @@
 import React, { useState, useRef } from 'react';
-import Button from '@material-ui/core/Button';
-import MenuContainer from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+import Button from '@mui/material/Button';
+import MenuContainer from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles, Theme, useMediaQuery } from '@material-ui/core';
+import Typography from '@mui/material/Typography';
+import { makeStyles, Theme, useMediaQuery } from '@mui/material';
 
 import AboutDialog from '../../../AboutDialog/AboutDialog';
 import ConnectionOptionsDialog from '../../../ConnectionOptionsDialog/ConnectionOptionsDialog';

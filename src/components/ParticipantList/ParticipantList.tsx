@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import Participant from '../Participant/Participant';
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+import { makeStyles, createStyles, Theme } from '@mui/material/styles';
 import useMainParticipant from '../../hooks/useMainParticipant/useMainParticipant';
 import useParticipantsContext from '../../hooks/useParticipantsContext/useParticipantsContext';
 import useVideoContext from '../../hooks/useVideoContext/useVideoContext';

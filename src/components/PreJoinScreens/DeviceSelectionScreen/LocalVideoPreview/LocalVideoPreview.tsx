@@ -1,6 +1,6 @@
 import React from 'react';
 import AvatarIcon from '../../../../icons/AvatarIcon';
-import { makeStyles, Theme, Typography } from '@material-ui/core';
+import { makeStyles, Theme, Typography } from '@mui/material';
 import LocalAudioLevelIndicator from '../../../LocalAudioLevelIndicator/LocalAudioLevelIndicator';
 import { LocalVideoTrack } from 'twilio-video';
 import VideoTrack from '../../../VideoTrack/VideoTrack';

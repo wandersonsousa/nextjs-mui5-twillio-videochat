@@ -1,6 +1,6 @@
 import { CSSProperties } from 'react';
 import clsx from 'clsx';
-import { makeStyles, createStyles, Theme, useMediaQuery } from '@material-ui/core';
+import { makeStyles, createStyles, Theme, useMediaQuery } from '@mui/material';
 import Participant from '../Participant/Participant';
 import useDominantSpeaker from '../../hooks/useDominantSpeaker/useDominantSpeaker';
 import useParticipantContext from '../../hooks/useParticipantsContext/useParticipantsContext';

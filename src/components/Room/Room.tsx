@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import { GalleryView } from '../GalleryView/GalleryView';
 import { MobileGalleryView } from '../MobileGalleryView/MobileGalleryView';
 import MainParticipant from '../MainParticipant/MainParticipant';
-import { makeStyles, Theme, useMediaQuery, useTheme } from '@material-ui/core';
+import { makeStyles, Theme, useMediaQuery, useTheme } from '@mui/material';
 import { Participant, Room as IRoom } from 'twilio-video';
 import { ParticipantAudioTracks } from '../ParticipantAudioTracks/ParticipantAudioTracks';
 import ParticipantList from '../ParticipantList/ParticipantList';

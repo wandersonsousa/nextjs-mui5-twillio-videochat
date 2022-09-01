@@ -1,6 +1,6 @@
-import { createTheme } from '@material-ui/core';
+import { createTheme } from '@mui/material';
 
-declare module '@material-ui/core/styles/createTheme' {
+declare module '@mui/material/styles/createTheme' {
   interface Theme {
     sidebarWidth: number;
     sidebarMobileHeight: number;

@@ -1,8 +1,8 @@
 import React from 'react';
 import BackgroundSelectionHeader from './BackgroundSelectionHeader/BackgroundSelectionHeader';
 import BackgroundThumbnail from './BackgroundThumbnail/BackgroundThumbnail';
-import Drawer from '@material-ui/core/Drawer';
-import { makeStyles, Theme } from '@material-ui/core/styles';
+import Drawer from '@mui/material/Drawer';
+import { makeStyles, Theme } from '@mui/material/styles';
 import { backgroundConfig } from '../VideoProvider/useBackgroundSettings/useBackgroundSettings';
 import useVideoContext from '../../hooks/useVideoContext/useVideoContext';
 

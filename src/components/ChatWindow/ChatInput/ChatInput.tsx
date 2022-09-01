@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Button, CircularProgress, Grid, makeStyles } from '@material-ui/core';
+import { Button, CircularProgress, Grid, makeStyles } from '@mui/material';
 import clsx from 'clsx';
 import { Conversation } from '@twilio/conversations';
 import FileAttachmentIcon from '../../../icons/FileAttachmentIcon';
 import { isMobile } from '../../../utils';
 import SendMessageIcon from '../../../icons/SendMessageIcon';
 import Snackbar from '../../Snackbar/Snackbar';
-import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+import TextareaAutosize from '@mui/material/TextareaAutosize';
 
 const useStyles = makeStyles(theme => ({
   chatInputContainer: {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { styled, Theme } from '@material-ui/core/styles';
+import { styled, Theme } from '@mui/material/styles';
 
 import MenuBar from './components/MenuBar/MenuBar';
 import MobileTopMenuBar from './components/MobileTopMenuBar/MobileTopMenuBar';

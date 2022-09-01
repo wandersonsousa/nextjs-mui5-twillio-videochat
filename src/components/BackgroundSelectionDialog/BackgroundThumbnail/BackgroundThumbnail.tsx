@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import BlurIcon from '@material-ui/icons/BlurOnOutlined';
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import { makeStyles, Theme, createStyles } from '@mui/material/styles';
 import NoneIcon from '@material-ui/icons/NotInterestedOutlined';
 import useVideoContext from '../../../hooks/useVideoContext/useVideoContext';
 

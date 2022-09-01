@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, Theme, Typography } from '@material-ui/core';
+import { makeStyles, Theme, Typography } from '@mui/material';
 import Swoosh from './swoosh';
 import VideoLogo from './VideoLogo';
 import TwilioLogo from './TwilioLogo';
