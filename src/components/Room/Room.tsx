@@ -1,11 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 import BackgroundSelectionDialog from '../BackgroundSelectionDialog/BackgroundSelectionDialog';
 import ChatWindow from '../ChatWindow/ChatWindow';
-import clsx from 'clsx';
 import { GalleryView } from '../GalleryView/GalleryView';
 import { MobileGalleryView } from '../MobileGalleryView/MobileGalleryView';
 import MainParticipant from '../MainParticipant/MainParticipant';
-import { makeStyles, Theme, useMediaQuery, useTheme } from '@mui/material';
+import { Theme, useMediaQuery, useTheme } from '@mui/material';
 import { Participant, Room as IRoom } from 'twilio-video';
 import { ParticipantAudioTracks } from '../ParticipantAudioTracks/ParticipantAudioTracks';
 import ParticipantList from '../ParticipantList/ParticipantList';
@@ -13,8 +12,9 @@ import { useAppState } from '../../state';
 import useChatContext from '../../hooks/useChatContext/useChatContext';
 import useScreenShareParticipant from '../../hooks/useScreenShareParticipant/useScreenShareParticipant';
 import useVideoContext from '../../hooks/useVideoContext/useVideoContext';
+import { makeStyles } from 'src/styles/makeStyles';
 
-const useStyles = makeStyles((theme: Theme) => {
+const useStyles = makeStyles()((theme: Theme) => {
   const totalMobileSidebarHeight = `${theme.sidebarMobileHeight +
     theme.sidebarMobilePadding * 2 +
     theme.participantBorderWidth}px`;
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) => {
       display: 'grid',
       gridTemplateColumns: `1fr ${theme.sidebarWidth}px`,
       gridTemplateRows: '100%',
-      [theme.breakpoints.down('sm')]: {
+      [theme.breakpoints.down('md')]: {
         gridTemplateColumns: `100%`,
         gridTemplateRows: `calc(100% - ${totalMobileSidebarHeight}) ${totalMobileSidebarHeight}`,
       },
@@ -71,12 +71,12 @@ export function useSetSpeakerViewOnScreenShare(
 }
 
 export default function Room() {
-  const classes = useStyles();
+  const { classes, cx } = useStyles();
   const { isChatWindowOpen } = useChatContext();
   const { isBackgroundSelectionOpen, room } = useVideoContext();
   const { isGalleryViewActive, setIsGalleryViewActive } = useAppState();
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const screenShareParticipant = useScreenShareParticipant();
 
   // Here we switch to speaker view when a participant starts sharing their screen, but
@@ -85,7 +85,7 @@ export default function Room() {
 
   return (
     <div
-      className={clsx(classes.container, {
+      className={cx(classes.container, {
         [classes.rightDrawerOpen]: isChatWindowOpen || isBackgroundSelectionOpen,
       })}
     >

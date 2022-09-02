@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
 import ChatIcon from '../../../icons/ChatIcon';
 import clsx from 'clsx';
-import { makeStyles } from '@mui/material';
+import { makeStyles } from 'src/styles/makeStyles';
 import useChatContext from '../../../hooks/useChatContext/useChatContext';
 import useVideoContext from '../../../hooks/useVideoContext/useVideoContext';
 
 export const ANIMATION_DURATION = 700;
 
-const useStyles = makeStyles({
+const useStyles = makeStyles()({
   iconContainer: {
     position: 'relative',
     display: 'flex',
@@ -57,7 +57,7 @@ const useStyles = makeStyles({
 });
 
 export default function ToggleChatButton() {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const [shouldAnimate, setShouldAnimate] = useState(false);
   const { isChatWindowOpen, setIsChatWindowOpen, conversation, hasUnreadMessages } = useChatContext();
   const { setIsBackgroundSelectionOpen } = useVideoContext();

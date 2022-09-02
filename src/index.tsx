@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { CssBaseline } from '@mui/material';
-import { MuiThemeProvider } from '@mui/material/styles';
+import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 
 import App from './App';
 import AppStateProvider, { useAppState } from './state';
@@ -35,27 +35,29 @@ const VideoApp = () => {
 };
 
 export const ReactApp = () => (
-  <MuiThemeProvider theme={theme}>
-    <CssBaseline />
-    <UnsupportedBrowserWarning>
-      <Router>
-        <AppStateProvider>
-          <Switch>
-            <PrivateRoute exact path="/">
-              <VideoApp />
-            </PrivateRoute>
-            <PrivateRoute path="/room/:URLRoomName">
-              <VideoApp />
-            </PrivateRoute>
-            <Route path="/login">
-              <LoginPage />
-            </Route>
-            <Redirect to="/" />
-          </Switch>
-        </AppStateProvider>
-      </Router>
-    </UnsupportedBrowserWarning>
-  </MuiThemeProvider>
+  <StyledEngineProvider injectFirst>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <UnsupportedBrowserWarning>
+        <Router>
+          <AppStateProvider>
+            <Switch>
+              <PrivateRoute exact path="/">
+                <VideoApp />
+              </PrivateRoute>
+              <PrivateRoute path="/room/:URLRoomName">
+                <VideoApp />
+              </PrivateRoute>
+              <Route path="/login">
+                <LoginPage />
+              </Route>
+              <Redirect to="/" />
+            </Switch>
+          </AppStateProvider>
+        </Router>
+      </UnsupportedBrowserWarning>
+    </ThemeProvider>
+  </StyledEngineProvider>
 );
 
 ReactDOM.render(<ReactApp />, document.getElementById('root'));

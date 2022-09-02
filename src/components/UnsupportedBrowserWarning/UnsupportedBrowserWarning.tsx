@@ -1,9 +1,9 @@
 import React from 'react';
 import Video from 'twilio-video';
 import { Container, Link, Typography, Paper, Grid } from '@mui/material';
-import { makeStyles } from '@mui/material/styles';
+import { makeStyles } from 'src/styles/makeStyles';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles()({
   container: {
     marginTop: '2.5em',
   },
@@ -16,7 +16,7 @@ const useStyles = makeStyles({
 });
 
 export default function UnsupportedBrowserWarning({ children }: { children: React.ReactElement }) {
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   if (!Video.isSupported) {
     return (

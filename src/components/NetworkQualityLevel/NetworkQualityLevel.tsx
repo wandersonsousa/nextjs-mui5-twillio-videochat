@@ -1,8 +1,8 @@
-import { makeStyles } from '@mui/material/styles';
 import { Participant } from 'twilio-video';
 import useParticipantNetworkQualityLevel from '../../hooks/useParticipantNetworkQualityLevel/useParticipantNetworkQualityLevel';
+import { makeStyles } from 'src/styles/makeStyles';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles()({
   outerContainer: {
     width: '2em',
     height: '2em',
@@ -29,7 +29,7 @@ const STEP = 3;
 const BARS_ARRAY = [0, 1, 2, 3, 4];
 
 export default function NetworkQualityLevel({ participant }: { participant: Participant }) {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const networkQualityLevel = useParticipantNetworkQualityLevel(participant);
 
   if (networkQualityLevel === null) return null;

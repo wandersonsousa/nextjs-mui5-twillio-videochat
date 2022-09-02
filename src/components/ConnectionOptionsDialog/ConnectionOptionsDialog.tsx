@@ -15,16 +15,17 @@ import {
   Theme,
   Typography,
 } from '@mui/material';
-import { makeStyles } from '@mui/material/styles';
 import { inputLabels, Settings } from '../../state/settings/settingsReducer';
 import { useAppState } from '../../state';
 import useRoomState from '../../hooks/useRoomState/useRoomState';
+import { makeStyles } from 'src/styles/makeStyles';
+import { SelectChangeEvent } from '@mui/material';
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles()((theme: Theme) => ({
   container: {
     width: '600px',
     minHeight: '400px',
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       width: 'calc(100vw - 32px)',
     },
     '& .inputSelect': {
@@ -35,7 +36,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     float: 'right',
   },
   paper: {
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       margin: '16px',
     },
   },
@@ -54,20 +55,20 @@ const useStyles = makeStyles((theme: Theme) => ({
 const withDefault = (val?: string) => (typeof val === 'undefined' ? 'default' : val);
 
 export default function ConnectionOptionsDialog({ open, onClose }: { open: boolean; onClose: () => void }) {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const { settings, dispatchSetting } = useAppState();
   const roomState = useRoomState();
   const isDisabled = roomState !== 'disconnected';
 
   const handleChange = useCallback(
-    (e: React.ChangeEvent<{ value: unknown; name?: string }>) => {
+    (e: any) => {
       dispatchSetting({ name: e.target.name as keyof Settings, value: e.target.value as string });
     },
     [dispatchSetting]
   );
 
   const handleNumberChange = useCallback(
-    (e: React.ChangeEvent<{ value: unknown; name?: string }>) => {
+    (e: any) => {
       if (!/[^\d]/.test(e.target.value as string)) handleChange(e);
     },
     [handleChange]

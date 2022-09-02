@@ -1,7 +1,8 @@
 import React from 'react';
 import clsx from 'clsx';
-import { makeStyles, Theme } from '@mui/material/styles';
+import { Theme } from '@mui/material/styles';
 import { LocalAudioTrack, LocalVideoTrack, Participant, RemoteAudioTrack, RemoteVideoTrack } from 'twilio-video';
+import { makeStyles } from 'src/styles/makeStyles';
 
 import AudioLevelIndicator from '../AudioLevelIndicator/AudioLevelIndicator';
 import AvatarIcon from '../../icons/AvatarIcon';
@@ -17,7 +18,7 @@ import useScreenShareParticipant from '../../hooks/useScreenShareParticipant/use
 import useTrack from '../../hooks/useTrack/useTrack';
 import useVideoContext from '../../hooks/useVideoContext/useVideoContext';
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles()((theme: Theme) => ({
   container: {
     position: 'relative',
     display: 'flex',
@@ -54,7 +55,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   fullWidth: {
     gridArea: '1 / 1 / 2 / 3',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       gridArea: '1 / 1 / 3 / 3',
     },
   },
@@ -83,7 +84,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: '0.1em 0.3em 0.1em 0',
     fontSize: '1.2rem',
     height: '28px',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       bottom: 'auto',
       right: 0,
       top: 0,
@@ -116,7 +117,7 @@ interface MainParticipantInfoProps {
 }
 
 export default function MainParticipantInfo({ participant, children }: MainParticipantInfoProps) {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const { room } = useVideoContext();
   const localParticipant = room!.localParticipant;
   const isLocal = localParticipant === participant;

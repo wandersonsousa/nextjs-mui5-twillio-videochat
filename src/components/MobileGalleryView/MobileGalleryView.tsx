@@ -1,10 +1,10 @@
 import { CSSProperties } from 'react';
-import clsx from 'clsx';
-import { makeStyles, createStyles, Theme, useMediaQuery } from '@mui/material';
+import { Theme, useMediaQuery } from '@mui/material';
 import Participant from '../Participant/Participant';
 import useDominantSpeaker from '../../hooks/useDominantSpeaker/useDominantSpeaker';
 import useParticipantContext from '../../hooks/useParticipantsContext/useParticipantsContext';
 import useVideoContext from '../../hooks/useVideoContext/useVideoContext';
+import { makeStyles } from 'src/styles/makeStyles';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -12,45 +12,43 @@ import 'swiper/css/pagination';
 import { Pagination } from 'swiper';
 import { Participant as IParticipant } from 'twilio-video';
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    participantContainer: {
-      background: theme.galleryViewBackgroundColor,
-      position: 'absolute',
-      top: 0,
-      right: 0,
-      bottom: 0,
-      left: 0,
+const useStyles = makeStyles()((theme: Theme) => ({
+  participantContainer: {
+    background: theme.galleryViewBackgroundColor,
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    height: '100%',
+    '& .swiper': {
       height: '100%',
-      '& .swiper': {
-        height: '100%',
-        '--swiper-pagination-bullet-inactive-color': 'white',
-      },
-      '& .swiper-wrapper': {
-        height: '100%',
-      },
-      '& .swiper-pagination.swiper-pagination-bullets': {
-        bottom: '5px',
-      },
+      '--swiper-pagination-bullet-inactive-color': 'white',
     },
-    isPaginationActive: {
-      '& .swiper-slide': {
-        // To leave room for the pagination indicators:
-        height: 'calc(100% - 21px)',
-        paddingBottom: '21px',
-      },
+    '& .swiper-wrapper': {
+      height: '100%',
     },
-    swiperSlide: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      alignSelf: 'center',
-      alignContent: 'flex-start',
+    '& .swiper-pagination.swiper-pagination-bullets': {
+      bottom: '5px',
     },
-  })
-);
+  },
+  isPaginationActive: {
+    '& .swiper-slide': {
+      // To leave room for the pagination indicators:
+      height: 'calc(100% - 21px)',
+      paddingBottom: '21px',
+    },
+  },
+  swiperSlide: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignSelf: 'center',
+    alignContent: 'flex-start',
+  },
+}));
 
 export function MobileGalleryView() {
-  const classes = useStyles();
+  const { classes, cx } = useStyles();
   const isMobileLandscape = useMediaQuery('screen and (orientation: landscape)');
   const { room } = useVideoContext();
   const { mobileGalleryViewParticipants } = useParticipantContext();
@@ -92,7 +90,7 @@ export function MobileGalleryView() {
   };
 
   return (
-    <div className={clsx(classes.participantContainer, { [classes.isPaginationActive]: remoteParticipantCount > 5 })}>
+    <div className={cx(classes.participantContainer, { [classes.isPaginationActive]: remoteParticipantCount > 5 })}>
       <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
         {pages.map((page, i) => (
           <SwiperSlide key={i} className={classes.swiperSlide}>

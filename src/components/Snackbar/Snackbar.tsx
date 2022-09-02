@@ -1,11 +1,12 @@
 import React from 'react';
 import clsx from 'clsx';
-import CloseIcon from '@material-ui/icons/Close';
+import CloseIcon from '@mui/icons-material/Close';
 import ErrorIcon from '../../icons/ErrorIcon';
-import { IconButton, makeStyles, Theme, Typography } from '@mui/material';
+import { IconButton, Theme, Typography } from '@mui/material';
 import MUISnackbar from '@mui/material/Snackbar';
 import WarningIcon from '../../icons/WarningIcon';
 import InfoIcon from '../../icons/InfoIcon';
+import { makeStyles } from 'src/styles/makeStyles';
 
 interface SnackbarProps {
   headline: string;
@@ -15,7 +16,7 @@ interface SnackbarProps {
   handleClose?: () => void;
 }
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles()((theme: Theme) => ({
   container: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -25,7 +26,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: '1em',
     borderRadius: '3px',
     boxShadow: '0 12px 24px 4px rgba(40,42,43,0.2)',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       width: '100%',
     },
   },
@@ -53,7 +54,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 export default function Snackbar({ headline, message, variant, open, handleClose }: SnackbarProps) {
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   const handleOnClose = (_: React.SyntheticEvent | React.MouseEvent, reason?: string) => {
     if (reason === 'clickaway') {

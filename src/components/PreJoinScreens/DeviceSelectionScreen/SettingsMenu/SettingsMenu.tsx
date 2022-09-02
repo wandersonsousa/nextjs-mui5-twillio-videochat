@@ -2,9 +2,10 @@ import React, { useState, useRef } from 'react';
 import Button from '@mui/material/Button';
 import MenuContainer from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import MoreIcon from '@material-ui/icons/MoreVert';
+import MoreIcon from '@mui/icons-material/MoreVert';
 import Typography from '@mui/material/Typography';
-import { makeStyles, Theme, useMediaQuery } from '@mui/material';
+import { Theme, useMediaQuery } from '@mui/material';
+import { makeStyles } from 'src/styles/makeStyles';
 
 import AboutDialog from '../../../AboutDialog/AboutDialog';
 import ConnectionOptionsDialog from '../../../ConnectionOptionsDialog/ConnectionOptionsDialog';
@@ -12,16 +13,16 @@ import DeviceSelectionDialog from '../../../DeviceSelectionDialog/DeviceSelectio
 import SettingsIcon from '../../../../icons/SettingsIcon';
 import { useAppState } from '../../../../state';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles()({
   settingsButton: {
     margin: '1.8em 0 0',
   },
 });
 
 export default function SettingsMenu({ mobileButtonClass }: { mobileButtonClass?: string }) {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const { roomType } = useAppState();
-  const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
   const [menuOpen, setMenuOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
   const [deviceSettingsOpen, setDeviceSettingsOpen] = useState(false);

@@ -1,12 +1,13 @@
 import React, { useState, useRef, useCallback } from 'react';
-import { makeStyles, Typography, Button, MenuItem, Link } from '@mui/material';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { Typography, Button, MenuItem, Link } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useAppState } from '../../../state';
 import UserAvatar from './UserAvatar/UserAvatar';
 import Menu from '@mui/material/Menu';
 import useVideoContext from '../../../hooks/useVideoContext/useVideoContext';
+import { makeStyles } from 'src/styles/makeStyles';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles()({
   userContainer: {
     position: 'absolute',
     top: 0,
@@ -26,7 +27,7 @@ const useStyles = makeStyles({
 });
 
 const UserMenu: React.FC = () => {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const { user, signOut } = useAppState();
   const { localTracks } = useVideoContext();
 

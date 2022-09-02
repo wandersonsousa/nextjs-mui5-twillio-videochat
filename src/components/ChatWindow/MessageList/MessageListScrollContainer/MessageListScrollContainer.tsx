@@ -1,13 +1,13 @@
 /* istanbul ignore file */
 import React from 'react';
-import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import Button from '@mui/material/Button';
 import clsx from 'clsx';
 import { Message } from '@twilio/conversations';
 import throttle from 'lodash.throttle';
-import { withStyles, WithStyles, createStyles } from '@mui/material/styles';
+import { withStyles, makeStyles } from 'src/styles/makeStyles';
 
-const styles = createStyles({
+const styles = {
   outerContainer: {
     minHeight: 0,
     flex: 1,
@@ -39,11 +39,7 @@ const styles = createStyles({
     opacity: 1,
     bottom: '24px',
   },
-});
-
-interface MessageListScrollContainerProps extends WithStyles<typeof styles> {
-  messages: Message[];
-}
+};
 
 interface MessageListScrollContainerState {
   isScrolledToBottom: boolean;
@@ -62,10 +58,7 @@ interface MessageListScrollContainerState {
  *
  * Note that this component is tested with Cypress only.
  */
-export class MessageListScrollContainer extends React.Component<
-  MessageListScrollContainerProps,
-  MessageListScrollContainerState
-> {
+export class MessageListScrollContainer extends React.Component<any> {
   chatThreadRef = React.createRef<HTMLDivElement>();
   state = { isScrolledToBottom: true, showButton: false, messageNotificationCount: 0 };
 
@@ -80,7 +73,7 @@ export class MessageListScrollContainer extends React.Component<
   }
 
   // This component updates as users send new messages:
-  componentDidUpdate(prevProps: MessageListScrollContainerProps, prevState: MessageListScrollContainerState) {
+  componentDidUpdate(prevProps, prevState) {
     const hasNewMessages = this.props.messages.length !== prevProps.messages.length;
 
     if (prevState.isScrolledToBottom && hasNewMessages) {
@@ -88,7 +81,7 @@ export class MessageListScrollContainer extends React.Component<
     } else if (hasNewMessages) {
       const numberOfNewMessages = this.props.messages.length - prevProps.messages.length;
 
-      this.setState(previousState => ({
+      this.setState((previousState: any) => ({
         // If there's at least one new message, show the 'new message' button:
         showButton: !previousState.isScrolledToBottom,
         // If 'new message' button is visible,
@@ -115,7 +108,7 @@ export class MessageListScrollContainer extends React.Component<
         innerScrollContainerEl.clientHeight + innerScrollContainerEl.scrollTop - innerScrollContainerEl!.scrollHeight
       ) < 1;
 
-    this.setState(prevState => ({
+    this.setState((prevState: any) => ({
       isScrolledToBottom,
       showButton: isScrolledToBottom ? false : prevState.showButton,
     }));
@@ -161,4 +154,4 @@ export class MessageListScrollContainer extends React.Component<
   }
 }
 
-export default withStyles(styles)(MessageListScrollContainer);
+export default withStyles(MessageListScrollContainer, styles);

@@ -2,9 +2,9 @@ import React from 'react';
 import clsx from 'clsx';
 import { Link } from '@mui/material';
 import linkify from 'linkify-it';
-import { makeStyles } from '@mui/material/styles';
+import { makeStyles } from 'src/styles/makeStyles';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles()({
   messageContainer: {
     borderRadius: '16px',
     display: 'inline-flex',
@@ -49,7 +49,7 @@ function addLinks(text: string) {
 }
 
 export default function TextMessage({ body, isLocalParticipant }: TextMessageProps) {
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   return (
     <div>

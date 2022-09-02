@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { DEFAULT_VIDEO_CONSTRAINTS, SELECTED_VIDEO_INPUT_KEY } from '../../../constants';
 import { FormControl, MenuItem, Typography, Select } from '@mui/material';
 import { LocalVideoTrack } from 'twilio-video';
-import { makeStyles } from '@mui/material/styles';
 import VideoTrack from '../../VideoTrack/VideoTrack';
 import useDevices from '../../../hooks/useDevices/useDevices';
 import useMediaStreamTrack from '../../../hooks/useMediaStreamTrack/useMediaStreamTrack';
 import useVideoContext from '../../../hooks/useVideoContext/useVideoContext';
+import { makeStyles } from 'src/styles/makeStyles';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles()({
   preview: {
     width: '300px',
     maxHeight: '200px',
@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 });
 
 export default function VideoInputList() {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const { videoInputDevices } = useDevices();
   const { localTracks } = useVideoContext();
 

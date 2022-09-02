@@ -1,15 +1,15 @@
 import React, { useState, useRef } from 'react';
 import AboutDialog from '../../AboutDialog/AboutDialog';
 import BackgroundIcon from '../../../icons/BackgroundIcon';
-import CollaborationViewIcon from '@material-ui/icons/AccountBox';
+import CollaborationViewIcon from '@mui/icons-material/AccountBox';
 import DeviceSelectionDialog from '../../DeviceSelectionDialog/DeviceSelectionDialog';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import GridViewIcon from '@material-ui/icons/Apps';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import GridViewIcon from '@mui/icons-material/Apps';
 import InfoIconOutlined from '../../../icons/InfoIconOutlined';
-import MoreIcon from '@material-ui/icons/MoreVert';
+import MoreIcon from '@mui/icons-material/MoreVert';
 import StartRecordingIcon from '../../../icons/StartRecordingIcon';
 import StopRecordingIcon from '../../../icons/StopRecordingIcon';
-import SearchIcon from '@material-ui/icons/Search';
+import SearchIcon from '@mui/icons-material/Search';
 import SettingsIcon from '../../../icons/SettingsIcon';
 import { Button, styled, Theme, useMediaQuery, Menu as MenuContainer, MenuItem, Typography } from '@mui/material';
 import { isSupported } from '@twilio/video-processors';
@@ -30,7 +30,7 @@ export const IconContainer = styled('div')({
 });
 
 export default function Menu(props: { buttonClassName?: string }) {
-  const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
 
   const [aboutOpen, setAboutOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);

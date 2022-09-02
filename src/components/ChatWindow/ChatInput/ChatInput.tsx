@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Button, CircularProgress, Grid, makeStyles } from '@mui/material';
-import clsx from 'clsx';
+import { Button, CircularProgress, Grid } from '@mui/material';
+import { makeStyles } from 'src/styles/makeStyles';
 import { Conversation } from '@twilio/conversations';
 import FileAttachmentIcon from '../../../icons/FileAttachmentIcon';
 import { isMobile } from '../../../utils';
@@ -8,7 +8,7 @@ import SendMessageIcon from '../../../icons/SendMessageIcon';
 import Snackbar from '../../Snackbar/Snackbar';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles()(theme => ({
   chatInputContainer: {
     borderTop: '1px solid #e4e7e9',
     borderBottom: '1px solid #e4e7e9',
@@ -68,7 +68,7 @@ const ALLOWED_FILE_TYPES =
   'audio/*, image/*, text/*, video/*, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document .xslx, .ppt, .pdf, .key, .svg, .csv';
 
 export default function ChatInput({ conversation, isChatWindowOpen }: ChatInputProps) {
-  const classes = useStyles();
+  const { classes, cx } = useStyles();
   const [messageBody, setMessageBody] = useState('');
   const [isSendingFile, setIsSendingFile] = useState(false);
   const [fileSendError, setFileSendError] = useState<string | null>(null);
@@ -136,7 +136,7 @@ export default function ChatInput({ conversation, isChatWindowOpen }: ChatInputP
         variant="error"
         handleClose={() => setFileSendError(null)}
       />
-      <div className={clsx(classes.textAreaContainer, { [classes.isTextareaFocused]: isTextareaFocused })}>
+      <div className={cx(classes.textAreaContainer, { [classes.isTextareaFocused]: isTextareaFocused })}>
         {/* 
         Here we add the "isTextareaFocused" class when the user is focused on the TextareaAutosize component.
         This helps to ensure a consistent appearance across all browsers. Adding padding to the TextareaAutosize

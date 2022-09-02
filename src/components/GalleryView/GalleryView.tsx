@@ -1,9 +1,9 @@
 import React from 'react';
-import ArrowBack from '@material-ui/icons/ArrowBack';
-import ArrowForward from '@material-ui/icons/ArrowForward';
+import ArrowBack from '@mui/icons-material/ArrowBack';
+import ArrowForward from '@mui/icons-material/ArrowForward';
 import clsx from 'clsx';
 import { GALLERY_VIEW_ASPECT_RATIO, GALLERY_VIEW_MARGIN } from '../../constants';
-import { IconButton, makeStyles, createStyles, Theme } from '@mui/material';
+import { IconButton, createStyles, Theme } from '@mui/material';
 import { Pagination } from '@mui/material';
 import Participant from '../Participant/Participant';
 import useGalleryViewLayout from '../../hooks/useGalleryViewLayout/useGalleryViewLayout';
@@ -12,74 +12,73 @@ import useParticipantsContext from '../../hooks/useParticipantsContext/usePartic
 import { usePagination } from './usePagination/usePagination';
 import useDominantSpeaker from '../../hooks/useDominantSpeaker/useDominantSpeaker';
 import { useAppState } from '../../state';
+import { makeStyles } from 'src/styles/makeStyles';
 
 const CONTAINER_GUTTER = '50px';
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    container: {
-      background: theme.galleryViewBackgroundColor,
-      position: 'relative',
-      gridArea: '1 / 1 / 2 / 3',
-    },
-    participantContainer: {
-      position: 'absolute',
-      display: 'flex',
-      top: CONTAINER_GUTTER,
-      right: CONTAINER_GUTTER,
-      bottom: CONTAINER_GUTTER,
-      left: CONTAINER_GUTTER,
-      margin: '0 auto',
-      alignContent: 'center',
-      flexWrap: 'wrap',
-      justifyContent: 'center',
-    },
-    buttonContainer: {
-      position: 'absolute',
-      top: 0,
-      bottom: 0,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
+const useStyles = makeStyles()((theme: Theme) => ({
+  container: {
+    background: theme.galleryViewBackgroundColor,
+    position: 'relative',
+    gridArea: '1 / 1 / 2 / 3',
+  },
+  participantContainer: {
+    position: 'absolute',
+    display: 'flex',
+    top: CONTAINER_GUTTER,
+    right: CONTAINER_GUTTER,
+    bottom: CONTAINER_GUTTER,
+    left: CONTAINER_GUTTER,
+    margin: '0 auto',
+    alignContent: 'center',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+  },
+  buttonContainer: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 
-    buttonContainerLeft: {
-      right: `calc(100% - ${CONTAINER_GUTTER})`,
-      left: 0,
+  buttonContainerLeft: {
+    right: `calc(100% - ${CONTAINER_GUTTER})`,
+    left: 0,
+  },
+  buttonContainerRight: {
+    right: 0,
+    left: `calc(100% - ${CONTAINER_GUTTER})`,
+  },
+  pagination: {
+    '& .MuiPaginationItem-root': {
+      color: 'white',
     },
-    buttonContainerRight: {
-      right: 0,
-      left: `calc(100% - ${CONTAINER_GUTTER})`,
+  },
+  paginationButton: {
+    color: 'black',
+    background: 'rgba(255, 255, 255, 0.8)',
+    width: '40px',
+    height: '40px',
+    '&:hover': {
+      background: 'rgba(255, 255, 255)',
     },
-    pagination: {
-      '& .MuiPaginationItem-root': {
-        color: 'white',
-      },
-    },
-    paginationButton: {
-      color: 'black',
-      background: 'rgba(255, 255, 255, 0.8)',
-      width: '40px',
-      height: '40px',
-      '&:hover': {
-        background: 'rgba(255, 255, 255)',
-      },
-    },
-    paginationContainer: {
-      position: 'absolute',
-      top: `calc(100% - ${CONTAINER_GUTTER})`,
-      right: 0,
-      bottom: 0,
-      left: 0,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-  })
-);
+  },
+  paginationContainer: {
+    position: 'absolute',
+    top: `calc(100% - ${CONTAINER_GUTTER})`,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+}));
 
 export function GalleryView() {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const { maxGalleryViewParticipants } = useAppState();
   const { room } = useVideoContext();
   const { galleryViewParticipants } = useParticipantsContext();
@@ -101,14 +100,22 @@ export function GalleryView() {
     <div className={classes.container}>
       <div className={clsx(classes.buttonContainer, classes.buttonContainerLeft)}>
         {!(currentPage === 1) && (
-          <IconButton className={classes.paginationButton} onClick={() => setCurrentPage(page => page - 1)}>
+          <IconButton
+            className={classes.paginationButton}
+            onClick={() => setCurrentPage(page => page - 1)}
+            size="large"
+          >
             <ArrowBack />
           </IconButton>
         )}
       </div>
       <div className={clsx(classes.buttonContainer, classes.buttonContainerRight)}>
         {!(currentPage === totalPages) && (
-          <IconButton className={classes.paginationButton} onClick={() => setCurrentPage(page => page + 1)}>
+          <IconButton
+            className={classes.paginationButton}
+            onClick={() => setCurrentPage(page => page + 1)}
+            size="large"
+          >
             <ArrowForward />
           </IconButton>
         )}

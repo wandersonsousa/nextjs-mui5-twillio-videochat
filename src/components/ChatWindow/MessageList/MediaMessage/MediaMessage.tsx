@@ -1,8 +1,8 @@
 import FileDownloadIcon from '../../../../icons/FileDownloadIcon';
-import { makeStyles } from '@mui/material/styles';
+import { makeStyles } from 'src/styles/makeStyles';
 import { Media } from '@twilio/conversations';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles()({
   messageContainer: {
     display: 'flex',
     padding: '0.9em 1.5em',
@@ -47,7 +47,7 @@ export function formatFileSize(bytes: number, suffixIndex = 0): string {
 }
 
 export default function FileMessage({ media }: MediaMessageProps) {
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   const handleClick = () => {
     media.getContentTemporaryUrl().then(url => {

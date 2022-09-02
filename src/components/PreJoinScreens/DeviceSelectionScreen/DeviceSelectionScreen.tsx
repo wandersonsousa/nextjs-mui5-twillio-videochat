@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, Typography, Grid, Button, Theme, Hidden } from '@mui/material';
+import { Typography, Grid, Button, Theme, Hidden } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 import LocalVideoPreview from './LocalVideoPreview/LocalVideoPreview';
 import SettingsMenu from './SettingsMenu/SettingsMenu';
@@ -9,8 +9,9 @@ import ToggleVideoButton from '../../Buttons/ToggleVideoButton/ToggleVideoButton
 import { useAppState } from '../../../state';
 import useChatContext from '../../../hooks/useChatContext/useChatContext';
 import useVideoContext from '../../../hooks/useVideoContext/useVideoContext';
+import { makeStyles } from 'src/styles/makeStyles';
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles()((theme: Theme) => ({
   gutterBottom: {
     marginBottom: '1em',
   },
@@ -24,14 +25,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   localPreviewContainer: {
     paddingRight: '2em',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       padding: '0 2.5em',
     },
   },
   joinButtons: {
     display: 'flex',
     justifyContent: 'space-between',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       flexDirection: 'column-reverse',
       width: '100%',
       '& button': {
@@ -40,7 +41,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   mobileButtonBar: {
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       display: 'flex',
       justifyContent: 'space-between',
       margin: '1.5em 0 1em',
@@ -59,7 +60,7 @@ interface DeviceSelectionScreenProps {
 }
 
 export default function DeviceSelectionScreen({ name, roomName, setStep }: DeviceSelectionScreenProps) {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const { getToken, isFetching } = useAppState();
   const { connect: chatConnect } = useChatContext();
   const { connect: videoConnect, isAcquiringLocalTracks, isConnecting } = useVideoContext();
@@ -109,7 +110,7 @@ export default function DeviceSelectionScreen({ name, roomName, setStep }: Devic
         <Grid item md={5} sm={12} xs={12}>
           <Grid container direction="column" justifyContent="space-between" style={{ height: '100%' }}>
             <div>
-              <Hidden smDown>
+              <Hidden mdDown>
                 <ToggleAudioButton className={classes.deviceButton} disabled={disableButtons} />
                 <ToggleVideoButton className={classes.deviceButton} disabled={disableButtons} />
               </Hidden>

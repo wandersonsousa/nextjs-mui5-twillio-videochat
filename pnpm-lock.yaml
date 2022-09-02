@@ -73,6 +73,7 @@ specifiers:
   swiper: ^8.1.5
   ts-jest: ^27.0.1
   ts-node: ^9.1.1
+  tss-react: ^4.0.0
   twilio: ^3.63.1
   twilio-video: ^2.23.0
   typescript: ^4.8.2
@@ -127,6 +128,7 @@ dependencies:
   strip-color: 0.1.0
   swiper: 8.3.2
   ts-node: 9.1.1_typescript@4.8.2
+  tss-react: 4.0.0_znai37cnmmzk7bl467jyukgy4e
   twilio: 3.81.0
   twilio-video: 2.24.0
   typescript: 4.8.2
@@ -20200,6 +20202,23 @@ packages:
 
   /tslib/2.4.0:
     resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
+
+  /tss-react/4.0.0_znai37cnmmzk7bl467jyukgy4e:
+    resolution: {integrity: sha512-pPkOKWiWWPbKdQFnGGeHEgRceUwkjrv0eldVCAdBll3j6Y3Ys/xwqsnlWYwWOU3SMJygVRE/S4CsIYx6KPpOkA==}
+    peerDependencies:
+      '@emotion/react': ^11.4.1
+      '@emotion/server': ^11.4.0
+      react: ^16.8.0 || ^17.0.2 || ^18.0.0
+    peerDependenciesMeta:
+      '@emotion/server':
+        optional: true
+    dependencies:
+      '@emotion/cache': 11.10.3
+      '@emotion/react': 11.10.4_7u6mpky5dbb5b3hgdescs5ficq
+      '@emotion/serialize': 1.1.0
+      '@emotion/utils': 1.2.0
+      react: 17.0.2
+    dev: false
 
   /tsutils/3.21.0_typescript@4.8.2:
     resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==}

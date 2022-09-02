@@ -2,11 +2,12 @@ import React from 'react';
 import BackgroundSelectionHeader from './BackgroundSelectionHeader/BackgroundSelectionHeader';
 import BackgroundThumbnail from './BackgroundThumbnail/BackgroundThumbnail';
 import Drawer from '@mui/material/Drawer';
-import { makeStyles, Theme } from '@mui/material/styles';
+import { Theme } from '@mui/material/styles';
+import { makeStyles } from 'src/styles/makeStyles';
 import { backgroundConfig } from '../VideoProvider/useBackgroundSettings/useBackgroundSettings';
 import useVideoContext from '../../hooks/useVideoContext/useVideoContext';
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles()((theme: Theme) => ({
   drawer: {
     display: 'flex',
     width: theme.rightDrawerWidth,
@@ -21,7 +22,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 function BackgroundSelectionDialog() {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const { isBackgroundSelectionOpen, setIsBackgroundSelectionOpen } = useVideoContext();
 
   const imageNames = backgroundConfig.imageNames;
